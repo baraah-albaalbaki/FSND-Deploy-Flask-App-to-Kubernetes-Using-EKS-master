@@ -42,12 +42,12 @@ phases:
       - export AWS_SESSION_TOKEN="$(echo ${CREDENTIALS} | jq -r '.Credentials.SessionToken')"
       - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
+      # - lines 39 through 44 resource: https://github.com/jungleBadger/FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS/blob/master/buildspec.yml
       - echo $JWT_SECRET > .env
       - kubectl apply -f simple_jwt_api.yml 
       - echo `after apply simple jwt`
       - printf '[{"name":"simple_jwt_api","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
-      - pwd
-      - ls
+
 artifacts:
   files: build.json
 

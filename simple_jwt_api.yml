@@ -36,6 +36,7 @@ spec:
             privileged: false
             readOnlyRootFilesystem: false
             allowPrivilegeEscalation: false
+          # line 49 through 42 resource: https://github.com/jungleBadger/FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS/blob/master/simple-jwt-api.yml
           env:
           - name: JWT_SECRET
             value: JWT_SECRET_VALUE
