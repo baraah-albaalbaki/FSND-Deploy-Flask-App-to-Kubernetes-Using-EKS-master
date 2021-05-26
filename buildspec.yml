@@ -36,6 +36,7 @@ phases:
     commands:
       - docker push $REPOSITORY_URI:$TAG
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME --role-arn $EKS_KUBECTL_ROLE_ARN
+<<<<<<< HEAD
       # - CREDENTIALS=$(aws sts assume-role --role-arn $EKS_KUBECTL_ROLE_ARN --role-session-name codebuild-kubectl --duration-seconds 900)
       # - export AWS_ACCESS_KEY_ID="$(echo ${CREDENTIALS} | jq -r '.Credentials.AccessKeyId')"
       # - export AWS_SECRET_ACCESS_KEY="$(echo ${CREDENTIALS} | jq -r '.Credentials.SecretAccessKey')"
@@ -43,7 +44,11 @@ phases:
       # - export AWS_EXPIRATION=$(echo ${CREDENTIALS} | jq -r '.Credentials.Expiration')
       # - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
       # - echo $JWT_SECRET > .env
+=======
+      - echo `BEfore apply simple jwt`
+>>>>>>> d42239c792530afccb719a4274b268c7e26b2dba
       - kubectl apply -f simple_jwt_api.yml 
+      - echo `after apply simple jwt`
       - printf '[{"name":"simple_jwt_api","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
       # -pwd
       # -ls
