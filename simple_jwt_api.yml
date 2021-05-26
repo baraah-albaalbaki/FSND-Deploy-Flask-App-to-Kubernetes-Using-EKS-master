@@ -4,7 +4,7 @@ metadata:
   name: simple-jwt-api
 spec:
   type: LoadBalancer
-  ports:simple
+  ports:
     - port: 80
       targetPort: 8090
   selector:
